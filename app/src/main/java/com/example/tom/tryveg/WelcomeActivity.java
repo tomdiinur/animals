@@ -18,8 +18,9 @@ import tyrantgit.explosionfield.ExplosionField;
 
 public class WelcomeActivity extends AppCompatActivity {
     private ExplosionField mExplosionField;
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 5;
 
+    // Check
     private SCViewPager mViewPager;
     private SCViewPagerAdapter mPageAdapter;
     private DotsView mDotsView;
