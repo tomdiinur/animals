@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "42036258386",
+    "project_id": "firebase-tryveg"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42036258386:android:7f044f9ced991cd9",
+        "android_client_info": {
+          "package_name": "com.example.tom.tryVeg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTUn9WjXD_Ch9zLmcPZ0EZcEnJJcXJw10"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
