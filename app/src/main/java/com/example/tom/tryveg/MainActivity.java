@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.tom.tryveg.Notification.NotificationService;
+import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.gigamole.navigationtabbar.ntb.NavigationTabBar;
 
@@ -64,21 +65,21 @@ public class MainActivity extends FragmentActivity {
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.rank),
                         Color.parseColor(colors[1]))
-//                        .selectedIcon(getResources().getDrawable(R.drawable.ic_friends))
+                        .selectedIcon(getResources().getDrawable(R.drawable.ic_cup))
                         .title("Friends")
                         .badgeTitle("")
                         .build()
         );
         // Challenge Zone
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.ic_cup),
-                        Color.parseColor(colors[2]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_medal))
-                        .title("Challenge")
-                        .badgeTitle("3")
-                        .build()
-        );
+//        models.add(
+//                new NavigationTabBar.Model.Builder(
+//                        getResources().getDrawable(R.drawable.ic_cup),
+//                        Color.parseColor(colors[2]))
+//                        .selectedIcon(getResources().getDrawable(R.drawable.ic_medal))
+//                        .title("Challenge")
+//                        .badgeTitle("3")
+//                        .build()
+//        );
         // Animals Zone
         models.add(
                 new NavigationTabBar.Model.Builder(

@@ -4,23 +4,40 @@ package com.example.tom.tryveg.friends;
  * Created by tom on 30-Jul-16.
  */
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
+import android.os.Build;
+import android.text.InputType;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.tom.tryveg.Globals;
+import com.example.tom.tryveg.Notification.NotificationService;
 import com.example.tom.tryveg.R;
 import com.example.tom.tryveg.classes.FacebookFriend;
 import com.facebook.share.model.AppInviteContent;
@@ -40,9 +57,11 @@ public class CustomListAdapter extends BaseAdapter {
     ImageLoader imageLoader = FriendsController.getInstance().getImageLoader();
     private Context context;
 
-    public CustomListAdapter(Activity activity, List<FacebookFriend> movieItems, Context context) {
+    private String m_Text = "";
+
+    public CustomListAdapter(Activity activity, List<FacebookFriend> friends, Context context) {
         this.activity = activity;
-        this.friendsItems = movieItems;
+        this.friendsItems = friends;
         this.context = context;
     }
 
@@ -75,17 +94,89 @@ public class CustomListAdapter extends BaseAdapter {
             imageLoader = FriendsController.getInstance().getImageLoader();
         NetworkImageView thumbNail = (NetworkImageView) convertView
                 .findViewById(R.id.thumbnail);
+
+        NetworkImageView thumbNailBack = (NetworkImageView) convertView
+                .findViewById(R.id.thumbnail_back);
+
         TextView name = (TextView) convertView.findViewById(R.id.name);
         ImageView imgPet = (ImageView) convertView.findViewById(R.id.imgPet);
         TextView daysVeg = (TextView) convertView.findViewById(R.id.daysVeg);
         TextView dateVeg = (TextView) convertView.findViewById(R.id.dateVeg);
-        final Button btnFollowOrInvite = (Button) convertView.findViewById(R.id.btnFollowOrInvite);
+//        final Button btnFollowOrInvite = (Button) convertView.findViewById(R.id.btnFollowOrInvite);
 
         // getting movie data for the row
-        FacebookFriend currFriend = friendsItems.get(position);
+        final FacebookFriend currFriend = friendsItems.get(position);
 
         // thumbnail image
         thumbNail.setImageUrl(currFriend.ThumbnailUrl, imageLoader);
+        thumbNailBack.setImageUrl(currFriend.ThumbnailUrl, imageLoader);
+
+        ImageView imgLike = (ImageView)convertView.findViewById(R.id.like);
+        ImageView imgMessage = (ImageView)convertView.findViewById(R.id.message);
+        ImageView imgFollow = (ImageView)convertView.findViewById(R.id.follow);
+
+        imgLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "You liked " + currFriend.Name,
+                            Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imgMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Message to " + currFriend.Name.split(" ")[0]);
+                builder.setIcon(context.getResources().getDrawable(R.drawable.ic_message));
+
+                // Set up the input
+                final EditText input = new EditText(context);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+                input.setText("Good Job!");
+
+                // Set up the buttons
+                builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m_Text = input.getText().toString();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+        });
+
+        imgFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // If move from not follow to follow
+                if ((v.getTag() == null) || (v.getTag().toString().equals("not following"))) {
+
+                    NotificationService notificationService = new NotificationService();
+                    notificationService.sendNotification("Someone is following you", "Tom");
+
+                    v.setTag("following");
+                    ((ImageView)v).setImageResource(R.drawable.ic_eye_close);
+
+                    Toast.makeText(context, "You are following " + currFriend.Name,
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    v.setTag("not following");
+                    ((ImageView)v).setImageResource(R.drawable.ic_eye_open);
+                }
+            }
+        });
 
         // title
         name.setText(currFriend.Name);
@@ -94,50 +185,11 @@ public class CustomListAdapter extends BaseAdapter {
 
         if (currFriend.bIsVegeterian) {
 
-            imgPet.getLayoutParams().height = 90;
-            imgPet.getLayoutParams().width = 90;
-
             imgPet.setImageDrawable(context.getResources().getDrawable(currFriend.User.getPetDrawable()));
 
             daysVeg.setText("Days vegetarian : " + String.valueOf(currFriend.User.getDaysVeg()));
 
             dateVeg.setText("Since: " + currFriend.User.getStartVeganString());
-
-            if (currFriend.User.equals(Globals.currentUser)) {
-                btnFollowOrInvite.setVisibility(View.INVISIBLE);
-
-                imgPet.getLayoutParams().height = 160;
-                imgPet.getLayoutParams().width = 160;
-            }
-            else {
-                if (currFriend.bIsFollowed) {
-                    btnFollowOrInvite.setText("unfollow");
-                } else {
-                    btnFollowOrInvite.setText("follow friend");
-                }
-
-                btnFollowOrInvite.setVisibility(View.VISIBLE);
-                btnFollowOrInvite.setTag("Follow");
-
-                btnFollowOrInvite.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        // If not following
-                        if (!Globals.friends.get(position).bIsFollowed) {
-                            Toast.makeText(context, "you are following " + currName,
-                                    Toast.LENGTH_SHORT).show();
-                            btnFollowOrInvite.setText("unfollow");
-                            Globals.friends.get(position).bIsFollowed = true;
-                        } else {
-                            Toast.makeText(context, "Stopped following " + currName,
-                                    Toast.LENGTH_SHORT).show();
-                            btnFollowOrInvite.setText("follow friend");
-                            Globals.friends.get(position).bIsFollowed = false;
-                        }
-                    }
-                });
-            }
         }
         else {
             imgPet.setImageResource(0);
@@ -145,41 +197,62 @@ public class CustomListAdapter extends BaseAdapter {
             daysVeg.setText("Still carnivore");
 
             dateVeg.setText("");
-
-
-            btnFollowOrInvite.setVisibility(View.VISIBLE);
-            btnFollowOrInvite.setText("invite friend");
-            btnFollowOrInvite.setTag("Invite");
-
-            btnFollowOrInvite.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, currName + " invited",
-                            Toast.LENGTH_SHORT).show();
-                    btnFollowOrInvite.setText("Invited");
-
-                    btnFollowOrInvite.setEnabled(false);
-
-
-                    String appLinkUrl, previewImageUrl;
-
-                    appLinkUrl = "https://fb.me/1804512149782038";
-                    previewImageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQXLGok0jIYC_FWzLV2FGJd2MBSn52WzlKWdzLM_Z5xNad7vVW3aQ";
-
-
-                    if (AppInviteDialog.canShow()) {
-                        AppInviteContent content = new AppInviteContent.Builder()
-                                .setApplinkUrl(appLinkUrl)
-                                .setPreviewImageUrl(previewImageUrl)
-                                .build();
-                        AppInviteDialog.show(activity, content);
-                    }
-
-                }
-            });
         }
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                View viewBack = null;
+                View viewFront = null;
+
+                // If we move to front
+                if ((v.getTag() == null) || (v.getTag().toString().equals("back"))) {
+                    viewBack = v.findViewById(R.id.back);
+                    viewFront = v.findViewById(R.id.front);
+                    v.setTag("front");
+                }
+                // If we move the back
+                else {
+                    viewBack = v.findViewById(R.id.front);
+                    viewFront = v.findViewById(R.id.back);
+                    v.setTag("back");
+                }
+
+                flip(viewFront,viewBack,500);
+
+                return true;
+            }
+        });
 
         return convertView;
     }
 
+    public void flip(final View front, final View back, final int duration)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            AnimatorSet set = new AnimatorSet();
+            set.playSequentially(
+                    ObjectAnimator.ofFloat(front, "rotationY", 90).setDuration(duration / 2),
+                    ObjectAnimator.ofInt(front, "visibility", View.GONE).setDuration(0),
+                    ObjectAnimator.ofFloat(back, "rotationY", -90).setDuration(0),
+                    ObjectAnimator.ofInt(back, "visibility", View.VISIBLE).setDuration(0),
+                    ObjectAnimator.ofFloat(back, "rotationY", 0).setDuration(duration / 2));
+            set.start();
+        } else
+        {
+            front.animate().rotationY(90).setDuration(duration / 2)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            front.setVisibility(View.GONE);
+                            back.setRotationY(-90);
+                            back.setVisibility(View.VISIBLE);
+                            back.animate().rotationY(0).setDuration(duration / 2).setListener(null);
+                        }
+                    });
+        }
+    }
 }
+
+

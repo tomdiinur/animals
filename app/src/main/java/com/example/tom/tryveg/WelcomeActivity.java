@@ -24,7 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private SCViewPager mViewPager;
     private SCViewPagerAdapter mPageAdapter;
     private DotsView mDotsView;
-    private boolean bFirstTime = true;
+    private boolean bFirstTime = false;
     Intent main;
 
     @Override

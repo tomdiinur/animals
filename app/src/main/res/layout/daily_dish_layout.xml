@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_view_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        shimmer:duration="1000">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,6 +38,5 @@
                 android:text='Dr. Helmut Kaplan, an Austrian writer and Philosopher'
                 style="@style/Quoter"/>
         </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </RelativeLayout>

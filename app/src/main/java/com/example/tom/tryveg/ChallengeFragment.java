@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.dev.sacot41.scviewpager.DotsView;
 import com.dev.sacot41.scviewpager.SCPositionAnimation;
@@ -27,6 +28,9 @@ public class ChallengeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.challenge_layout, container, false);
+
+        ImageView icon = new ImageView(getActivity()); // Create an icon
+        icon.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.ic_cow));
 
         return v;
     }

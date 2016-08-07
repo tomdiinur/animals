@@ -96,11 +96,17 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp" />
 
-        <com.facebook.share.widget.ShareButton
-            android:id="@+id/share_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Share" />
+            <com.facebook.share.widget.ShareButton
+                android:id="@+id/share_on_fb_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Share" />
+
+        <!--<com.facebook.share.widget.LikeView-->
+            <!--android:id="@+id/like_view"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:contentDescription="Like" />-->
 
     </LinearLayout>
 

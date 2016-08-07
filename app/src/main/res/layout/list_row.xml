@@ -5,6 +5,11 @@
     android:background="@drawable/list_row_selector"
     android:padding="8dp" >
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/front"
+        android:layout_height="wrap_content">
+
     <!-- Thumbnail Image -->
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/thumbnail"
@@ -15,10 +20,10 @@
 
     <ImageView
         android:id="@+id/imgPet"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp" />
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:id="@+id/name"
@@ -48,13 +53,68 @@
         android:textColor="@color/genre"
         android:textSize="@dimen/dateVeg" />
 
-    <Button
-        android:id="@+id/btnFollowOrInvite"
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textColor="@color/year"
-        android:textSize="@dimen/btn" />
+        android:visibility="gone"
+        android:id="@+id/back"
+        android:layout_height="wrap_content">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/thumbnail_back"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/message"
+            android:src="@drawable/ic_message"/>
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/like"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/message"
+            android:src="@drawable/ic_like"/>
+
+        <ImageView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:id="@+id/follow"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/like"
+            android:src="@drawable/ic_eye_open"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/year"
+            android:text="Month Challenge"
+            android:id="@+id/btn_month_challenge"
+            android:textSize="@dimen/btn" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/year"
+            android:text="Week Challenge"
+            android:layout_toLeftOf="@+id/btn_month_challenge"
+            android:id="@+id/btn_week_challenge"
+            android:layout_marginRight="120dp"
+            android:textSize="@dimen/btn" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
+
+

@@ -105,11 +105,11 @@ public class ShopFragment extends Fragment implements AdapterView.OnItemSelected
         if (docu!=null) {
             if (tv != null) {
                 if (Globals.currentUser.getDaysVeg() >= docu.getDays()) {
-                    tv.setText("יש לך את החיה הזו");
+                    tv.setText("You have this animal");
                 }
                 else {
                     int daysLeft = docu.getDays() - Globals.currentUser.getDaysVeg();
-                    tv.setText("עוד " + daysLeft + " ימים להשגת ה" + docu.getName());
+                    tv.setText("more "+ daysLeft + " days to get the " + docu.getName());
                 }
             }
 //            txtView.setCompoundDrawablesWithIntrinsicBounds(docu.getDrawable(), 0, 0, 0);
