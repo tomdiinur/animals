@@ -1,11 +1,15 @@
 package com.example.tom.tryveg.Fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.tom.tryveg.Globals;
 import com.example.tom.tryveg.R;
@@ -32,41 +36,35 @@ public class PersonalZoneFragment extends Fragment {
 
         callbackManager = CallbackManager.Factory.create();
 
-
-        View v = inflater.inflate(R.layout.persnal_zone_layout, container, false);
+        View v = inflater.inflate(R.layout.material_design_profile_screen_xml_ui_design, container, false);
+        ImageButton imgProfile = (ImageButton)v.findViewById(R.id.user_profile_photo);
+        ImageView imgBackground = (ImageView)v.findViewById(R.id.header_cover_image);
+        TextView txtName = (TextView)v.findViewById(R.id.user_profile_name);
+        TextView txtVeganFrom = (TextView)v.findViewById(R.id.user_profile_short_bio);
+        TextView txtDaysToNext = (TextView)v.findViewById(R.id.days_to_next);
+        ImageView shareButton = (ImageView)v.findViewById(R.id.share_button);
         ArcProgress progress = (ArcProgress)v.findViewById(R.id.arc_progress);
 
+        imgProfile.setImageDrawable(getActivity().getResources().getDrawable(Globals.currentUser.getPetDrawable()));
+        imgBackground.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.abcd));
+        txtName.setText(Globals.currentUser.Name);
+        txtVeganFrom.setText("Vegetarian since: " + Globals.currentUser.getStartVeganString());
         int progressValue = Globals.currentUser.getDaysVeg() * 100 / 365;
         progress.setProgress(progressValue);
 
-        loginButton = (LoginButton) v.findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email");
-        // If using in a fragment
-        loginButton.setFragment(this);
-        // Other app specific specialization
+        int nextAnimal = Globals.currentUser.getNextPet().getDays() - Globals.currentUser.getDaysVeg();
+        txtDaysToNext.setText("Days to next animal: " + String.valueOf(nextAnimal));
 
-        // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-                int x = 3;
-            }
-
-            @Override
-            public void onCancel() {
-                // App code
-                int x = 3;
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-                int x = 3;
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
             }
         });
-
-//        Uri imageUri = Uri.parse("android.resource://com.example.tom.tryveg/drawable/cat");
 
         ShareButton fbShareButton = (ShareButton) v.findViewById(R.id.share_on_fb_button);
 
@@ -80,10 +78,32 @@ public class PersonalZoneFragment extends Fragment {
 
         fbShareButton.setShareContent(content);
 
-//        LikeView likeView = (LikeView) v.findViewById(R.id.like_view);
-//        likeView.setObjectIdAndType(
-//                "https://www.facebook.com/groups/156499668116950/",
-//                LikeView.ObjectType.PAGE);
+//        loginButton = (LoginButton) v.findViewById(R.id.login_button);
+//        loginButton.setReadPermissions("email");
+        // If using in a fragment
+//        loginButton.setFragment(this);
+        // Other app specific specialization
+
+        // Callback registration
+//        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                // App code
+//                int x = 3;
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                // App code
+//                int x = 3;
+//            }
+//
+//            @Override
+//            public void onError(FacebookException exception) {
+//                // App code
+//                int x = 3;
+//            }
+//        });
 
         return v;
     }

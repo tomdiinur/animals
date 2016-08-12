@@ -64,23 +64,6 @@ public class ChallengeFragment extends Fragment {
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
-
-//                int resId = Globals.currentUser.getPetDrawable();
-//                Resources resources = getActivity().getResources();
-//                Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-//                        resources.getResourcePackageName(resId) + '/' +
-//                        resources.getResourceTypeName(resId) + '/' +
-//                        resources.getResourceEntryName(resId));
-//
-////                Uri imageUri = Uri.parse("android.resource://" + getActivity().getPackageName()
-////                        + "/drawable/" + "rhyno.png");
-//                Intent shareIntent = new Intent();
-//                shareIntent.setAction(Intent.ACTION_SEND);
-//                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello");
-//                shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-//                shareIntent.setType("image/*");
-//                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                startActivity(Intent.createChooser(shareIntent, "send"));
             }
         });
 

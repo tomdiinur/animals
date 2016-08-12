@@ -161,6 +161,20 @@ public class User{
         return Globals.pets.get(Globals.pets.size() - 1);
     }
 
+    public Pet getNextPet() {
+        int days = getDaysVeg();
+        for (int i = 0; i < Globals.pets.size(); i++) {
+            if (Globals.pets.get(i).getDays() > days) {
+                // Not even ant
+                if (i == 0) {
+                    return Globals.pets.get(1);
+                }
+                return Globals.pets.get(i);
+            }
+        }
+        return Globals.pets.get(Globals.pets.size() - 1);
+    }
+
     public int getPetDrawable() {
         return getPet().getDrawable();
     }

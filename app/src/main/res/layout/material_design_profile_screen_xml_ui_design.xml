@@ -115,9 +115,13 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
+                android:id="@+id/days_to_next"
                 android:text="Days to next animal:" />
 
-
+            <ImageView
+                android:id="@+id/next_animal_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
 
             <TextView
                 android:layout_width="fill_parent"

@@ -71,15 +71,15 @@ public class MainActivity extends FragmentActivity {
                         .build()
         );
         // Challenge Zone
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.ic_cup),
-                        Color.parseColor(colors[2]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_medal))
-                        .title("Challenge")
-                        .badgeTitle("3")
-                        .build()
-        );
+//        models.add(
+//                new NavigationTabBar.Model.Builder(
+//                        getResources().getDrawable(R.drawable.ic_cup),
+//                        Color.parseColor(colors[2]))
+//                        .selectedIcon(getResources().getDrawable(R.drawable.ic_medal))
+//                        .title("Challenge")
+//                        .badgeTitle("3")
+//                        .build()
+//        );
         // Animals Zone
         models.add(
                 new NavigationTabBar.Model.Builder(
