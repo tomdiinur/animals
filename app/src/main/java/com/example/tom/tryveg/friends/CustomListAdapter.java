@@ -42,8 +42,19 @@ import com.example.tom.tryveg.Globals;
 import com.example.tom.tryveg.Notification.NotificationService;
 import com.example.tom.tryveg.R;
 import com.example.tom.tryveg.classes.FacebookFriend;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.share.Sharer;
 import com.facebook.share.model.AppInviteContent;
+import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.AppInviteDialog;
+import com.facebook.share.widget.ShareDialog;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -199,14 +210,14 @@ public class CustomListAdapter extends BaseAdapter {
 
             imgPet.setImageDrawable(context.getResources().getDrawable(currFriend.User.getPetDrawable()));
 
-            daysVeg.setText("Days vegetarian : " + String.valueOf(currFriend.User.getDaysVeg()));
+            daysVeg.setText("Days vegan : " + String.valueOf(currFriend.User.getDaysVeg()));
 
             dateVeg.setText("Since: " + currFriend.User.getStartVeganString());
         }
         else {
             imgPet.setImageResource(0);
 
-            daysVeg.setText("Still carnivore");
+            daysVeg.setText("Still carnist");
 
             dateVeg.setText("");
         }
@@ -234,6 +245,47 @@ public class CustomListAdapter extends BaseAdapter {
                 flip(viewFront,viewBack,500);
 
                 return true;
+            }
+        });
+
+        Button button= (Button) convertView.findViewById(R.id.btn_week_challenge);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CallbackManager callbackManager;
+                ShareDialog shareDialog;
+                FacebookSdk.sdkInitialize(activity);
+                callbackManager = CallbackManager.Factory.create();
+                shareDialog = new ShareDialog(activity);
+                // this part is optional
+                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+
+                    }
+
+                });
+                if (ShareDialog.canShow(ShareLinkContent.class)) {
+                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                            .setContentTitle("Hello Facebook")
+                            .setContentDescription(
+                                    "The 'Hello Facebook' sample  showcases simple Facebook integration")
+                            .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
+                            .build();
+
+                    shareDialog.show(linkContent);
+                }
+
             }
         });
 
@@ -265,8 +317,6 @@ public class CustomListAdapter extends BaseAdapter {
                     });
         }
     }
-
-
 }
 
 

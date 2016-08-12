@@ -110,7 +110,7 @@
             android:layout_toLeftOf="@+id/btn_month_challenge"
             android:id="@+id/btn_week_challenge"
             android:layout_marginRight="120dp"
-            android:textSize="@dimen/btn" />
+            android:textSize="@dimen/btn"/>
 
 
     </RelativeLayout>
