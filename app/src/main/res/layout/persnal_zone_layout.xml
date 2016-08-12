@@ -17,6 +17,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+
         android:orientation="vertical">
 
         <TextView
@@ -40,8 +41,8 @@
         <com.github.lzyzsd.circleprogress.ArcProgress
             android:id="@+id/arc_progress"
             android:layout_marginLeft="50dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/text2"

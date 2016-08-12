@@ -11,7 +11,8 @@ import java.util.List;
  * Created by tom on 29-Jul-16.
  */
 public class Globals {
-    public static User currentUser = new User("05/06/2016", "תם דינור", 12);
+    public static User currentUser = new User("05/06/2016", "Tom Dinur", 12,
+            "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/13082710_10208891514186559_6323955819174045392_n.jpg?oh=563185f7e1ec54a3d9131f0c78f02e6c&oe=58338DBD");
 
     public static ArrayList<Pet> pets = new ArrayList<Pet>() {{
         add(new Pet("ant", R.drawable.ant, R.raw.ants, 0));
@@ -34,7 +35,7 @@ public class Globals {
         add(new Pet("kangaroo", R.drawable.kangaroo, R.raw.kangaroo, 180));
         add(new Pet("cow", R.drawable.cow,  R.raw.cow, 201));
         add(new Pet("giraffe", R.drawable.giraffe, R.raw.giraffe, 224));
-        add(new Pet("panda,", R.drawable.panda, R.raw.panda, 251));
+        add(new Pet("panda", R.drawable.panda, R.raw.panda, 251));
         add(new Pet("octupus", R.drawable.octupus, 278));
         add(new Pet("rhyno", R.drawable.rhyno, R.raw.rhyno, 305));
         add(new Pet("elephant", R.drawable.elephant, R.raw.elephant, 330));

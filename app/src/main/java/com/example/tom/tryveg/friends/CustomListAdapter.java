@@ -13,6 +13,8 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.text.InputType;
@@ -43,6 +45,10 @@ import com.example.tom.tryveg.classes.FacebookFriend;
 import com.facebook.share.model.AppInviteContent;
 import com.facebook.share.widget.AppInviteDialog;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import bolts.AppLinks;
@@ -120,6 +126,9 @@ public class CustomListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Toast.makeText(context, "You liked " + currFriend.Name,
                             Toast.LENGTH_SHORT).show();
+
+                NotificationService notificationService = new NotificationService(context);
+                notificationService.sendNotification(currFriend.Name.split(" ")[0] + " Liked your progress","", currFriend.ThumbnailUrl);
             }
         });
 
@@ -142,6 +151,9 @@ public class CustomListAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
+
+                        NotificationService notificationService = new NotificationService(context);
+                        notificationService.sendNotification(currFriend.Name.split(" ")[0] + " sent you:", m_Text, currFriend.ThumbnailUrl);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -162,8 +174,8 @@ public class CustomListAdapter extends BaseAdapter {
                 // If move from not follow to follow
                 if ((v.getTag() == null) || (v.getTag().toString().equals("not following"))) {
 
-                    NotificationService notificationService = new NotificationService();
-                    notificationService.sendNotification("Someone is following you", "Tom");
+                    NotificationService notificationService = new NotificationService(context);
+                    notificationService.sendNotification(currFriend.Name.split(" ")[0] + " is follwing you", "Keep on going!", currFriend.ThumbnailUrl);
 
                     v.setTag("following");
                     ((ImageView)v).setImageResource(R.drawable.ic_eye_close);
@@ -253,6 +265,8 @@ public class CustomListAdapter extends BaseAdapter {
                     });
         }
     }
+
+
 }
 
 

@@ -15,6 +15,7 @@ public class User{
     public Date StartVeganTime;
     public String Name;
     public int Level;
+    public String ThumbnailUrl;
 
     private static SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -37,6 +38,22 @@ public class User{
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public User(String startVeganTime, String name, int level,String thumb) {
+
+        this.Name = name;
+        this.Level = level;
+
+        try {
+            Date dateObj = curFormater.parse(startVeganTime);
+            this.StartVeganTime = dateObj;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.ThumbnailUrl = thumb;
     }
 
     public VegTimeFormat getVeganTimeFormat() {

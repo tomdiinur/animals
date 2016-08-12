@@ -1,10 +1,9 @@
-package com.example.tom.tryveg;
+package com.example.tom.tryveg.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.tom.tryveg.Globals;
+import com.example.tom.tryveg.R;
 import com.example.tom.tryveg.classes.FacebookFriend;
 import com.example.tom.tryveg.friends.CustomListAdapter;
 

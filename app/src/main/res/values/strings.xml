@@ -3,6 +3,7 @@
     <string name="hello">Hello</string>
     <string name="facebook_app_id">1804043589828894</string>
     <string name="textview_bonjour">Hello</string>
+    <string name="send_to">Send to</string>
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>

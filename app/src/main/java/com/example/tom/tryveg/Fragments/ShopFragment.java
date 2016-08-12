@@ -1,4 +1,4 @@
-package com.example.tom.tryveg;
+package com.example.tom.tryveg.Fragments;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -7,11 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.tom.tryveg.Globals;
+import com.example.tom.tryveg.R;
 import com.example.tom.tryveg.carousel.AppUtils;
 import com.example.tom.tryveg.carousel.CarouselView;
 import com.example.tom.tryveg.carousel.CarouselViewAdapter;
@@ -57,7 +58,8 @@ public class ShopFragment extends Fragment implements AdapterView.OnItemSelected
 
         // add the serach filter
         txtView = new TextView(activity);
-        txtView.setText("אני");
+//        txtView.setText("current animal");
+        txtView.setText("");
         txtView.setSingleLine();
         txtView.setTextColor(Color.BLACK);
         txtView.setCompoundDrawablesWithIntrinsicBounds(Globals.currentUser.getPetDrawable(), 0, 0, 0);

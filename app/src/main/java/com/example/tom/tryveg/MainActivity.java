@@ -33,8 +33,8 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         startService(new Intent(this, NotificationService.class));
 
@@ -71,15 +71,15 @@ public class MainActivity extends FragmentActivity {
                         .build()
         );
         // Challenge Zone
-//        models.add(
-//                new NavigationTabBar.Model.Builder(
-//                        getResources().getDrawable(R.drawable.ic_cup),
-//                        Color.parseColor(colors[2]))
-//                        .selectedIcon(getResources().getDrawable(R.drawable.ic_medal))
-//                        .title("Challenge")
-//                        .badgeTitle("3")
-//                        .build()
-//        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_cup),
+                        Color.parseColor(colors[2]))
+                        .selectedIcon(getResources().getDrawable(R.drawable.ic_medal))
+                        .title("Challenge")
+                        .badgeTitle("3")
+                        .build()
+        );
         // Animals Zone
         models.add(
                 new NavigationTabBar.Model.Builder(
@@ -102,7 +102,7 @@ public class MainActivity extends FragmentActivity {
         );
 
         navigationTabBar.setModels(models);
-        navigationTabBar.setViewPager(viewPager, 2);
+        navigationTabBar.setViewPager(viewPager, 0);
         navigationTabBar.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
