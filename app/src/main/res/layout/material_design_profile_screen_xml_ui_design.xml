@@ -118,10 +118,12 @@
                 android:id="@+id/days_to_next"
                 android:text="Days to next animal:" />
 
-            <ImageView
-                android:id="@+id/next_animal_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+            <!--<ImageView-->
+                <!--android:id="@+id/next_animal_image"-->
+                <!--android:layout_marginBottom="30dp"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp" />-->
 
             <TextView
                 android:layout_width="fill_parent"
@@ -152,10 +154,11 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="#fff"
+                android:id="@+id/reset_vechallenge"
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Quit VeChallenge" />
+                android:text="Reset VeChallenge" />
 
         </LinearLayout>
     </RelativeLayout>

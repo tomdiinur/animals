@@ -16,9 +16,9 @@ public class Globals {
 
     public static ArrayList<Pet> pets = new ArrayList<Pet>() {{
         add(new Pet("ant", R.drawable.ant, R.raw.ants, 0));
-        add(new Pet("fish", R.drawable.fish, R.raw.fish, 2));
-        add(new Pet("crab", R.drawable.crab, 5));
-        add(new Pet("snail", R.drawable.snail, 9));
+        add(new Pet("fish", R.drawable.fish, R.raw.fish, 3));
+        add(new Pet("snail", R.drawable.snail, 6));
+        add(new Pet("crab", R.drawable.crab, 9));
         add(new Pet("mouse", R.drawable.mouse, R.raw.mouse, 15));
         add(new Pet("turtle", R.drawable.turtle, 20));
         add(new Pet("parrot", R.drawable.parrot, R.raw.parrot, 27));
@@ -44,29 +44,29 @@ public class Globals {
 
     public static ArrayList<FacebookFriend> friends = new ArrayList<FacebookFriend>() {{
         // Vegan
+        add(new FacebookFriend("Ophir Dobkin",
+                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/12074652_10205144625359635_733000551163221532_n.jpg?oh=3edbebdb0a88799d59f11137883ea9a7&oe=584F625F",
+                true, new User("11/08/2015", "Ophir Dobkin", 1)));
+
         add(new FacebookFriend("Dor Redlich",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/1923767_1152974981380153_8989876837042782409_n.jpg?oh=760a1f9a8ce55085d21d05d09743ef92&oe=5825C33E",
-                true, new User("22/07/2015", "Dor Redlich", 1)));
+                true, new User("15/08/2015", "Dor Redlich", 1)));
 
         add(new FacebookFriend("Shahar Peiser",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/11429962_10206976747201556_7137513052587253960_n.jpg?oh=b40b2911c478fe5f9cf0c9d97f4d927b&oe=581B4AE1",
-                true, new User("01/08/2015", "Shahar Peiser", 1)));
+                true, new User("26/09/2015", "Shahar Peiser", 1)));
 
         add(new FacebookFriend("Lidor Ben-Itzhak",
                 "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/13494908_10201868505830971_1435705703325592049_n.jpg?oh=138e35bd973c2af7df9938049838a0bd&oe=582B8C31",
-                true, new User("15/09/2015", "Lidor Ben-Itzhak", 1)));
-
-        add(new FacebookFriend("Omer Drukman",
-                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/11181700_10204343113089317_5681925959977545992_n.jpg?oh=90c0882635984a72e7adbbf9611fe550&oe=58274EA0",
-                true, new User("10/10/2015", "Omer Drukman", 1)));
+                true, new User("20/10/2015", "Lidor Ben-Itzhak", 1)));
 
         add(new FacebookFriend("Gal Boker",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/11390371_1136231783058668_3724691348392538681_n.jpg?oh=cab7599ce813ddcb50d9f03ba9f6fb1c&oe=58307B35",
                 true, new User("11/11/2015", "Gal Boker", 1)));
 
-        add(new FacebookFriend("Vicky Vatury",
-                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/13680813_1192080160813587_8565828456088942021_n.jpg?oh=adc5fc08a3a0bdc49c49642c8ce9be04&oe=58192721",
-                true, new User("02/01/2016", "Vicky Vatury", 1)));
+        add(new FacebookFriend("Omer Drukman",
+                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/11181700_10204343113089317_5681925959977545992_n.jpg?oh=90c0882635984a72e7adbbf9611fe550&oe=58274EA0",
+                true, new User("28/12/2015", "Omer Drukman", 1)));
 
         add(new FacebookFriend("Omri Mintz",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/1544530_10201720264663456_1727315112_n.jpg?oh=9036b2b75069977433f5c6423b8d7d1e&oe=582F5CDB",
@@ -92,6 +92,10 @@ public class Globals {
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/12744016_10154071244388738_5712503374722469156_n.jpg?oh=c2cdb8a4a830f4ad0b679ab45a2b53fb&oe=5829579F",
                 true, new User("22/04/2016", "Inbar Amir", 1)));
 
+        add(new FacebookFriend("Vicky Vatury",
+                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/13680813_1192080160813587_8565828456088942021_n.jpg?oh=adc5fc08a3a0bdc49c49642c8ce9be04&oe=58192721",
+                true, new User("02/05/2016", "Vicky Vatury", 1)));
+
         add(new FacebookFriend("Or Mishli",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/1482789_10202134737622571_884755055_n.jpg?oh=c492f8e9acbe36494de1de3627a696c5&oe=582ED734",
                 true, new User("19/05/2016", "Or Mishli", 1)));
@@ -108,9 +112,26 @@ public class Globals {
                 "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/12144767_10206642206110248_1205691425768904859_n.jpg?oh=395a93392c19ceeb11aab7b38a2de069&oe=585EDD42",
                 true, new User("16/07/2016", "Noam maynfler", 1)));
 
+        add(new FacebookFriend("Tali Cohen",
+                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/541586_806705526050527_3310318901350013932_n.jpg?oh=03785b79337e95de60b3666b3bb46214&oe=5853F44E",
+                true, new User("20/07/2016", "Tali Cohen", 1)));
+
+
         add(new FacebookFriend("Nir Hayon",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/10983214_1625326094349277_3210829405126680928_n.jpg?oh=57e4e7e067e8383ad0bd8b4c0f34dd61&oe=581E4F79",
                 true, new User("24/07/2016", "Nir Hayon", 1)));
+
+        add(new FacebookFriend("Jennifer Amsellem",
+                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/13118891_10206098709042006_6936334643011544571_n.jpg?oh=e0ca84a2d1da333b7c9811f65b6a2c2f&oe=584EFC54",
+                true, new User("30/07/2016", "Jennifer Amsellem", 1)));
+
+        add(new FacebookFriend("Shahar Yakov",
+                "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/11781849_10207281882876079_6542413600912741353_n.jpg?oh=815c60ca8fb43be9e3cfa0d53a07fe5e&oe=5816ECDE",
+                true, new User("05/08/2016", "Shahar Yakov", 1)));
+
+
+
+
 
         // Carnivores
         add(new FacebookFriend("Ruth Ashraf",
