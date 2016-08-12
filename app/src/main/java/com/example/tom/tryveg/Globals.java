@@ -37,7 +37,7 @@ public class Globals {
         add(new Pet("giraffe", R.drawable.giraffe, R.raw.giraffe, 224));
         add(new Pet("panda", R.drawable.panda, R.raw.panda, 251));
         add(new Pet("octupus", R.drawable.octupus, 278));
-        add(new Pet("rhyno", R.drawable.rhyno, R.raw.rhyno, 305));
+        add(new Pet("rhino", R.drawable.rhyno, R.raw.rhyno, 305));
         add(new Pet("elephant", R.drawable.elephant, R.raw.elephant, 330));
         add(new Pet("hippo", R.drawable.hippo, R.raw.hippo, 365));
     }};
@@ -46,7 +46,7 @@ public class Globals {
         // Vegan
         add(new FacebookFriend("Ophir Dobkin",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/12074652_10205144625359635_733000551163221532_n.jpg?oh=3edbebdb0a88799d59f11137883ea9a7&oe=584F625F",
-                true, new User("11/08/2015", "Ophir Dobkin", 1)));
+                true, new User("11/08/2015", "Ophir Dobkin", 1), 1364711742));
 
         add(new FacebookFriend("Dor Redlich",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/1923767_1152974981380153_8989876837042782409_n.jpg?oh=760a1f9a8ce55085d21d05d09743ef92&oe=5825C33E",
@@ -129,17 +129,13 @@ public class Globals {
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/11781849_10207281882876079_6542413600912741353_n.jpg?oh=815c60ca8fb43be9e3cfa0d53a07fe5e&oe=5816ECDE",
                 true, new User("05/08/2016", "Shahar Yakov", 1)));
 
-
-
-
-
         // Carnivores
         add(new FacebookFriend("Ruth Ashraf",
                 "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/10553384_10204486755119063_1283892030966111528_n.jpg?oh=c06eb2188d29ab000a91a120c9ba60d8&oe=5818A4DF"
                 , false));
         add(new FacebookFriend("Yuval Mund",
                 "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/12391133_10208515369147388_7583734240589702725_n.jpg?oh=f236059a08374259f771cc80f7f55f2e&oe=582071C1",
-                false));
+                false, 1402656456));
         add(new FacebookFriend("Bar Molot",
                 "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/12369023_10207930589643700_1749666221649677747_n.jpg?oh=c8f67b6ee8ec0c63b2657d0266a04c90&oe=582DA551",
                 false));
@@ -147,7 +143,6 @@ public class Globals {
                 "https://scontent.fhfa1-1.fna.fbcdn.net/v/t1.0-9/12193364_1071397119536971_4742944198413404622_n.jpg?oh=853236ef6868d353e4e76580f8df03fb&oe=582ED685",
                 false
                 ));
-
 
         add(new FacebookFriend("Ido Goldenberg",
                 "https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/12004718_10203307610169836_7228702124746396813_n.jpg?oh=68286313ca23e6df914ebef9dcd55410&oe=581BF923",

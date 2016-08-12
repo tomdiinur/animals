@@ -9,6 +9,7 @@ public class FacebookFriend {
     public boolean bIsVegeterian;
     public boolean bIsFollowed;
     public User User;
+    public int FacebookID;
 
     public FacebookFriend(String name, String url, boolean bIsVegeterian, com.example.tom.tryveg.classes.User user) {
         Name = name;
@@ -26,5 +27,15 @@ public class FacebookFriend {
         Name = name;
         ThumbnailUrl = url;
         this.bIsVegeterian = bIsVegeterian;
+    }
+
+    public FacebookFriend(String s, String s1, boolean b, User user, int i) {
+        this(s,s1,b,user);
+        this.FacebookID = i;
+    }
+
+    public FacebookFriend(String name, String url, boolean bIsVegeterian, int i) {
+        this(name,url,bIsVegeterian);
+        this.FacebookID = i;
     }
 }
